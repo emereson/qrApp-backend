@@ -11,6 +11,11 @@ const router = express.Router();
 router.use(authMiddleware.protect);
 router.get('/', otsController.findAll);
 router.post('/:id', userMiddleware.validExistUser, otsController.create);
+router.get(
+  '/:id/user/:userId',
+  otsMiddleware.validExistOts,
+  otsController.findOne
+);
 
 router
   .route('/:id')

@@ -10,6 +10,11 @@ const router = express.Router();
 router.use(authMiddleware.protect);
 router.get('/', batteriesController.findAll);
 router.post('/:id', userMiddleware.validExistUser, batteriesController.create);
+router.get(
+  '/:id/user/:userId',
+  batteriesMiddleware.validExistBatty,
+  batteriesController.findOne
+);
 
 router
   .route('/:id')

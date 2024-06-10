@@ -4,11 +4,12 @@ import { AppError } from '../utils/AppError.js';
 import { catchAsync } from '../utils/catchAsync.js';
 
 export const validExistBatty = catchAsync(async (req, res, next) => {
-  const { id } = req.params;
+  const { id, userId } = req.params;
 
   const battery = await Batteries.findOne({
     where: {
       ot_mano: id,
+      user_id: userId,
     },
     include: {
       model: TypesCounter,
