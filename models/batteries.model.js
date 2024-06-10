@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../database/config.js';
 
-const Ots = db.define('ots', {
+const Batteries = db.define('batteries', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -16,15 +16,6 @@ const Ots = db.define('ots', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  counter: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  clac: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-
   materials: {
     type: DataTypes.TEXT,
     allowNull: false,
@@ -35,4 +26,4 @@ const Ots = db.define('ots', {
   },
 });
 
-export { Ots };
+export { Batteries };

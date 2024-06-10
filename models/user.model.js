@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import { db } from "../database/config.js";
+import { DataTypes } from 'sequelize';
+import { db } from '../database/config.js';
 
-const User = db.define("users", {
+const User = db.define('users', {
   id: {
     primaryKey: true,
     autoIncrement: true,
@@ -16,7 +16,12 @@ const User = db.define("users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
+  user_name: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
+  },
+  dni: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
@@ -26,14 +31,14 @@ const User = db.define("users", {
     allowNull: false,
   },
   role: {
-    type: DataTypes.ENUM("admin"),
+    type: DataTypes.ENUM('admin', 'user'),
     allowNull: false,
-    defaultValue: "admin",
+    defaultValue: 'admin',
   },
   status: {
-    type: DataTypes.ENUM("active", "disabled"),
+    type: DataTypes.ENUM('active', 'disabled'),
     allowNull: false,
-    defaultValue: "active",
+    defaultValue: 'active',
   },
 });
 

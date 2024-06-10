@@ -1,11 +1,11 @@
-import { catchAsync } from "../utils/catchAsync.js";
-import { Ots } from "../models/ots.model.js";
-import { TypesOfAction } from "../models/typesOfAction.model.js";
+import { catchAsync } from '../utils/catchAsync.js';
+import { Ots } from '../models/ots.model.js';
+import { TypesOfAction } from '../models/typesOfAction.model.js';
 export const findAll = catchAsync(async (req, res, next) => {
   const ots = await Ots.findAll({});
 
   return res.status(200).json({
-    status: "Success",
+    status: 'Success',
     results: ots.length,
     ots,
   });
@@ -15,12 +15,14 @@ export const findOne = catchAsync(async (req, res, next) => {
   const { ot } = req;
 
   return res.status(200).json({
-    status: "Success",
+    status: 'Success',
     ot,
   });
 });
 
 export const create = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+
   const {
     ot_mano,
     counter,
@@ -38,6 +40,7 @@ export const create = catchAsync(async (req, res, next) => {
   } = req.body;
 
   const ot = await Ots.create({
+    user_id: id,
     ot_mano,
     counter,
     clac,
@@ -58,8 +61,8 @@ export const create = catchAsync(async (req, res, next) => {
   });
 
   res.status(201).json({
-    status: "success",
-    message: "the ot has been created successfully!",
+    status: 'success',
+    message: 'the ot has been created successfully!',
     ot,
     typeOfAction,
   });
@@ -86,8 +89,8 @@ export const update = catchAsync(async (req, res) => {
   });
 
   return res.status(200).json({
-    status: "success",
-    message: "ot information has been updated",
+    status: 'success',
+    message: 'ot information has been updated',
     ot,
   });
 });
@@ -98,7 +101,7 @@ export const deleteElement = catchAsync(async (req, res) => {
   await ot.destroy();
 
   return res.status(200).json({
-    status: "success",
+    status: 'success',
     message: `The ot with id: ${ot.id} has been deleted`,
   });
 });

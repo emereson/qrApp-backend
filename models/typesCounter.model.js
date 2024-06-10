@@ -1,38 +1,27 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../database/config.js';
 
-const Ots = db.define('ots', {
+const TypesCounter = db.define('typesCounter', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-  user_id: {
+  battery_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  ot_mano: {
+  counter_code: {
     type: DataTypes.STRING,
     allowNull: false,
+    defaultValue: false,
   },
-  counter: {
+  counter_state: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  clac: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-
-  materials: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  observations: {
-    type: DataTypes.TEXT,
-    allowNull: false,
+    defaultValue: false,
   },
 });
 
-export { Ots };
+export { TypesCounter };

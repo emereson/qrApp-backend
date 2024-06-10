@@ -11,6 +11,7 @@ import { globalErrorHandler } from './controllers/error.controllers.js';
 
 import { usersRouter } from './routes/users.routes.js';
 import { otsRouter } from './routes/ots.routes.js';
+import { batteriesRouter } from './routes/batteries.routes.js';
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(hpp());
 app.use('/api/v1', limiter);
 app.use('/api/v1/user', usersRouter);
 app.use('/api/v1/ots', otsRouter);
+app.use('/api/v1/batteries', batteriesRouter);
 
 app.all('*', (req, res, next) => {
   return next(
